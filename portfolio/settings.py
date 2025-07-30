@@ -52,6 +52,9 @@ MIDDLEWARE = [
 
 
 CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = [
+    "https://wizard-7zh9.onrender.com",
+]
 
 
 ROOT_URLCONF = 'portfolio.urls'
