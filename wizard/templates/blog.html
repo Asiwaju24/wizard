@@ -1,0 +1,127 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+  <title>Our Blog - Insights & Stories</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000024;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(120deg, #002746, #0b7592);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      height: 40vh;
+    }
+
+    header h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .blog-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+.blog-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .blog-content {
+      padding: 20px;
+    }
+
+    .blog-content h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #0078d4;
+    }
+
+    .blog-content p {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 12px;
+    }
+
+    .read-more {
+      text-decoration: none;
+      font-weight: 600;
+      color: #0078d4;
+      display: inline-block;
+      margin-top: 10px;
+      transition: color 0.3s;
+    }
+
+    .read-more:hover {
+      color: #005ea6;
+    }
+
+    @media (max-width: 992px) {
+      .blog-container {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .blog-container {
+        column-count: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Our Blog</h1>
+  <p>Dive into articles on data, tech, AI, innovation and growth strategies.</p>
+</header>
+
+<div class="blog-container">
+  <!-- Loop over blog posts in Django -->
+  {% for post in posts %}
+    <div class="blog-card">
+      <img src="{{ post.image.url }}" alt="{{ post.title }}">
+      <div class="blog-content">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.summary|truncatechars:120|safe }}</p>
+        <a href="{% url 'blog_detail' post.id %}" class="read-more">Read more →</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

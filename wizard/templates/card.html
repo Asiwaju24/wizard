@@ -1,0 +1,149 @@
+
+  <style>
+  
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      height: 300px;
+      margin: 40px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1000px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: height 0.3s ease;
+    }
+
+    .card {
+      position: absolute;
+      width: 300px;
+      height: 220px;
+      border-radius: 20px;
+      transition: all 0.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      padding: 20px;
+      text-align: left;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-content {
+      background: white;
+      border-radius: 16px;
+      padding: 16px 20px;
+      width: 100%;
+    }
+
+    .card-content h3 {
+      margin-bottom: 6px;
+      font-size: 1.1rem;
+    }
+
+    .card-content p {
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    .users {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .users img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+    }
+
+    /* Position classes */
+    .card.pos-0 { transform: scale(1) translateX(0); z-index: 5; }
+    .card.pos-1 { transform: scale(0.9) translateX(-180px); z-index: 4; opacity: 0.8; }
+    .card.pos-2 { transform: scale(0.8) translateX(-360px); z-index: 3; opacity: 0.6; }
+    .card.pos-3 { transform: scale(0.9) translateX(180px); z-index: 4; opacity: 0.8; }
+    .card.pos-4 { transform: scale(0.8) translateX(360px); z-index: 3; opacity: 0.6; }
+    .card.hidden { transform: scale(0.6) translateX(800px); z-index: 1; opacity: 0; pointer-events: none; }
+
+    /* ===== Responsive Fixes ===== */
+    @media (max-width: 768px) {
+      .carousel {
+        height: auto;
+        flex-direction: column;
+      }
+
+      .card {
+        position: relative;
+        width: 90%;
+        height: auto;
+        transform: none !important;
+        margin-bottom: 20px;
+        opacity: 1 !important;
+        z-index: 1 !important;
+      }
+
+      .card.hidden {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card-content h3 {
+        font-size: 1rem;
+      }
+
+      .card-content p {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="carousel" id="carousel">
+  <div class="card" style="background-color:#FAD9A1;"><div class="card-content"><h3>Designers</h3>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe nulla esse doloremque vel voluptatem ducimus voluptatibus est deleniti hic? Accusantium?</p><div class="users"><img src="https://i.pravatar.cc/32?img=1"></div></div></div>
+  <div class="card" style="background-color:#B9FBC0;"><div class="card-content"><h3>Developers</h3><p>Code innovative apps</p><div class="users"><img src="https://i.pravatar.cc/32?img=2"></div></div></div>
+  <div class="card" style="background-color:#CDB4DB;"><div class="card-content"><h3>AI Community</h3><p>AI builders & thinkers</p><div class="users"><img src="https://i.pravatar.cc/32?img=3"></div></div></div>
+  <div class="card" style="background-color:#A1C9F1;"><div class="card-content"><h3>Writers</h3><p>Share & collaborate stories</p><div class="users"><img src="https://i.pravatar.cc/32?img=4"></div></div></div>
+  <div class="card" style="background-color:#FFC2C2;"><div class="card-content"><h3>Marketing Hub</h3><p>Growth strategies together</p><div class="users"><img src="https://i.pravatar.cc/32?img=5"></div></div></div>
+  <div class="card" style="background-color:#E2F0CB;"><div class="card-content"><h3>New Team</h3><p>Fresh ideas weekly</p><div class="users"><img src="https://i.pravatar.cc/32?img=6"></div></div></div>
+</div>
+
+<script>
+  const carousel = document.getElementById('carousel');
+  let cards = Array.from(carousel.children);
+
+  function updatePositions() {
+    cards.forEach((card, index) => {
+      card.className = 'card'; // reset
+      if (window.innerWidth > 768) {
+        if (index <= 4) {
+          card.classList.add(`pos-${index}`);
+        } else {
+          card.classList.add('hidden');
+        }
+      } else {
+        card.classList.remove('hidden');
+      }
+    });
+  }
+
+  function slide() {
+    const first = cards.shift();
+    cards.push(first);
+    carousel.appendChild(first);
+    updatePositions();
+  }
+
+  carousel.addEventListener('click', slide);
+  setInterval(slide, 4000);
+  updatePositions();
+
+  window.addEventListener('resize', updatePositions);
+</script>

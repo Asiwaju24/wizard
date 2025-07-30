@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FAQ Section</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #ffffff;
+      line-height: 1.6;
+      background-color: #000; /* optional for contrast */
+    }
+
+    .faq-container {
+      max-width: 600px;
+      width: 90%;
+      margin: 60px auto;
+      padding: 30px 20px;
+      border-radius: 12px;
+      background-color: #0e003d38;
+      box-shadow: 0 10px 25px rgba(148, 138, 138, 0.07);
+    }
+
+    .faq-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+
+    .faq {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .faq:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      cursor: pointer;
+      padding: 15px 10px;
+      font-size: 18px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      padding: 0 10px 15px;
+      font-size: 16px;
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .faq.active .faq-answer {
+      display: block;
+    }
+
+    .faq-question::after {
+      content: "+";
+      font-size: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq.active .faq-question::after {
+      content: "−";
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 🔸 Responsive design */
+    @media (max-width: 480px) {
+      .faq-container {
+        padding: 20px 15px;
+      }
+
+      .faq-question {
+        font-size: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .faq-question::after {
+        align-self: flex-end;
+      }
+
+      .faq-answer {
+        font-size: 15px;
+      }
+
+      .faq-container h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="faq-container">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq">
+    <div class="faq-question">What services do you offer?</div>
+    <div class="faq-answer">We offer website design, web development, maintenance, and UI/UX design services tailored to your needs.</div>
+  </div>
+
+  <div class="faq">
+    <div class="faq-question">How long does it take to build a website?</div>
+    <div class="faq-answer">Depending on the complexity, it usually takes between 1 to 4 weeks for most small to medium websites.</div>
+  </div>
+
+  <div class="faq">
+    <div class="faq-question">Do you offer support after launch?</div>
+    <div class="faq-answer">Yes! We offer continuous support, updates, and maintenance to ensure your site remains secure and up to date.</div>
+  </div>
+
+  <div class="faq">
+    <div class="faq-question">Can I request changes after the site is live?</div>
+    <div class="faq-answer">Absolutely. We’re flexible with post-launch revisions and happy to implement feedback and updates.</div>
+  </div>
+</div>
+
+<script>
+  const faqs = document.querySelectorAll('.faq');
+
+  faqs.forEach(faq => {
+    faq.querySelector('.faq-question').addEventListener('click', () => {
+      faq.classList.toggle('active');
+    });
+  });
+</script>
+
+</body>
+</html>

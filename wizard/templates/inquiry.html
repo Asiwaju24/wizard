@@ -1,0 +1,172 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<head>
+ <title>Project Setup Wizard</title>
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #080024;
+      margin: 0;
+      padding: 0;
+    }
+
+    .wizard-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #000836;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+      color: white;
+    }
+
+    h2 {
+      text-align: center;
+      color: #f1f1f1;
+    }
+
+    .step {
+      display: none;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    button {
+      padding: 12px 20px;
+      background-color: #0078d4;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #005ea6;
+    }
+
+    @media (max-width: 600px) {
+      .buttons {
+        flex-direction: column;
+      }
+      .buttons button {
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wizard-container">
+  <h2>Project Brief Setup</h2>
+  <form id="projectWizard" method="POST" action="{% url 'inquiry' %}">
+    {% csrf_token %}
+    
+    <!-- STEP 1 -->
+    <div class="step active">
+      <label for="fullNameInput">Full Name</label>
+      <input type="text" id="fullNameInput" placeholder="John Doe" required>
+
+      <label for="emailInput">Email</label>
+      <input type="email" id="emailInput" placeholder="john@example.com" required>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <label for="projectTypeInput">Project Type</label>
+      <input type="text" id="projectTypeInput" placeholder="Website, AI Tool, etc." required>
+
+      <label for="budgetInput">Estimated Budget</label>
+      <input type="text" id="budgetInput" placeholder="$500 - $5000" required>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step">
+      <label for="timelineInput">Timeline</label>
+      <input type="text" id="timelineInput" placeholder="2 weeks, 1 month..." required>
+
+      <label for="messageInput">Additional Notes</label>
+      <textarea id="messageInput"  id="messageArea" rows="4" placeholder="Tell us more..."></textarea>
+    </div>
+
+    <!-- Hidden fields for backend -->
+    <input type="hidden" name="fullName">
+    <input type="hidden" name="email">
+    <input type="hidden" name="projectType">
+    <input type="hidden" name="budget">
+    <input type="hidden" name="timeline">
+    <input type="hidden" name="message">
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button type="button" onclick="nextPrev(-1)">Previous</button>
+      <button type="button" onclick="nextPrev(1)">Next</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  CKEDITOR.replace('messageArea');
+</script>
+<script>
+  let currentStep = 0;
+  const steps = document.querySelectorAll(".step");
+
+  function showStep(n) {
+    steps.forEach((step, index) => {
+      step.classList.remove("active");
+      if (index === n) step.classList.add("active");
+    });
+  }
+
+  function nextPrev(n) {
+    // Save inputs into hidden fields
+    const currentFields = steps[currentStep].querySelectorAll("input, textarea");
+    currentFields.forEach(field => {
+      const hidden = document.querySelector(`[name="${field.id.replace('Input', '')}"]`);
+      if (hidden) hidden.value = field.value;
+    });
+
+    currentStep += n;
+
+    if (currentStep >= steps.length) {
+      document.getElementById("projectWizard").submit();
+      return;
+    }
+
+    if (currentStep < 0) currentStep = 0;
+    showStep(currentStep);
+  }
+
+  // Show the first step initially
+  showStep(currentStep);
+</script>
+
+  {% endblock %}

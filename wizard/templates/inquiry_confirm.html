@@ -1,0 +1,13 @@
+<h2>Confirm Your Inquiry</h2>
+<ul>
+  <li><strong>Name:</strong> {{ inquiry.full_name }}</li>
+  <li><strong>Email:</strong> {{ inquiry.email }}</li>
+  <li><strong>Subject:</strong> {{ inquiry.subject }}</li>
+  <li><strong>Message:</strong> {{ inquiry.message }}</li>
+</ul>
+
+<form method="POST">
+  {% csrf_token %}
+  <button type="submit">Confirm & Submit</button>
+  <a href="{% url 'inquiry_step1' %}">← Edit</a>
+</form>

@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <title>{{ post.title }}</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f6f8;
+      color: #212121;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 350px;
+      background: url('{{ post.image.url }}') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .hero h1 {
+      position: relative;
+      font-size: 42px;
+      font-weight: 700;
+      color: #111;
+      text-align: center;
+      padding: 0 20px;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: -80px auto 60px;
+      background: white;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+      z-index: 10;
+      position: relative;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .post-content {
+      font-size: 17px;
+      line-height: 1.75;
+      color: #333;
+    }
+
+    .post-content p {
+      margin-bottom: 1.5em;
+    }
+
+    .post-content h2, .post-content h3 {
+      margin-top: 40px;
+      font-weight: 600;
+      color: #222;
+    }
+
+    .post-content blockquote {
+      padding: 15px 20px;
+      margin: 30px 0;
+      background: #f9f9f9;
+      border-left: 4px solid #007acc;
+      font-style: italic;
+      color: #444;
+    }
+
+    .post-content img {
+      max-width: 100%;
+      margin: 25px 0;
+      border-radius: 8px;
+    }
+
+    .back-button {
+      display: block;
+      text-align: center;
+      margin-top: 40px;
+      padding: 10px 25px;
+      background: #007acc;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #005fa3;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        height: 280px;
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .container {
+        margin: -60px 15px 40px;
+        padding: 25px 20px;
+      }
+
+      .post-content {
+        font-size: 16px;
+      }
+    }
+  </style>
+
+  <div class="hero">
+    <h1>{{ post.title }}</h1>
+  </div>
+
+  <div class="container">
+    <div class="meta">
+      Published on {{ post.posted_at|date:"F d, Y" }} | By {{ post.author }}
+    </div>
+
+    <div class="post-content">
+      {{ post.body|safe }}
+    </div>
+
+    <a href="{% url 'blog' %}" class="back-button">← Back to Blog</a>
+  </div>
+{% endblock %}

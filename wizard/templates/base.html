@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/v4-shims.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/v5-shims.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+  <style>
+    body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #040011;
+    color: #c3f2f8;
+    line-height: 1.6;
+}
+  </style>
+  <div >
+</div>
+  <nav class="navbar">
+    <div class="logo-container">
+      <a href="#" class="logo pl-3" title="space"></a>
+      <a href="{% url 'home' %}" class="logo pl-3" data-aos="fade-down" data-aos-duration="2000">Wizard Technology</a>
+    </div>
+    <div class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="{% url 'home' %}" data-aos="fade-down" data-aos-duration="2500">Home</a></li>
+      <li><a href="{% url 'service'%}" data-aos="fade-down" data-aos-duration="3000">Services</a></li>
+      <li><a href="{% url 'about'%}" data-aos="fade-down" data-aos-duration="3500">About</a></li>
+      <li><a href="{% url 'contact'%}" data-aos="fade-down" data-aos-duration="4000">Contact</a></li>
+      <li><a href="{% url 'blog'%}" data-aos="fade-down" data-aos-duration="4000">Blog</a></li>
+      <li><a href="{% url 'tech'%}" class='disp' data-aos="fade-down" data-aos-duration="4000">Tech Explorer</a></li>
+    </ul>
+    <ul class="nav-links nav-last">
+       <li><a href="{% url 'tech'%}" class='btn p-3' data-aos="fade-down" data-aos-duration="4000">Tech Explorer</a></li>
+       <li><a href="#" title="space"></a></li>
+    </ul>
+  </nav>
+
+  {% block content %}
+
+  {% endblock %}
+
+  
+  
+  <footer class="site-footer">
+  <div class="footer-container">
+
+    <!-- Company Info -->
+    <div class="footer-about">
+      <h3>Wizard Technology</h3>
+      <p>We are a subscription-based web design agency, delivering high-quality, scalable websites designed to drive results and grow your business.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'service' %}">Services</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+        <li><a href="{% url 'home' %}#faq">FAQ</a></li>
+      </ul>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="footer-newsletter">
+      <h4>Subscribe</h4>
+      <p>Stay updated with new courses, events & insights.</p>
+      <form method="post" action="{% url 'subscribe' %}">
+        {% csrf_token %}
+          <input type="email" name="email" placeholder="Your email" required>
+          <button type="submit">Subscribe</button>
+      </form>
+
+      <div class="social-icons">
+        <a title="Facebook" href="https://www.facebook.com/profile.php?id=61578810473115"><i class="fab fa-facebook-f"></i></a>
+        <a title="Instagram" href="https://discord.gg/bMMwxhEw"><i class="fab fa-discord"></i></a>
+        <a title="Linkedin" href="https://www.linkedin.com/in/olaniyan-taslim-3a80212aa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a>
+        <a title="Twitter" href="https://x.com/OlaniyanTaslim?t=ndlz-pBVzVaVC4Yxy0v99g&s-09"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.32/build/spline-viewer.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script>
+    
+
+const animatedElements = document.querySelectorAll(
+  '.fade-in, .ease-out, .slide-in-left, .slide-in-right'
+);
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('scroll-show');
+    } else {
+      entry.target.classList.remove('scroll-show');
+    }
+  });
+}, {
+  threshold: 0.2,
+});
+
+animatedElements.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}    
+  <style>
+    
+
+.team-section {
+    padding: 50px 20px;
+    background-color:  linear-gradient(45deg, rgb(23, 0, 85) 0%, rgb(0, 0, 59) 100%);
+    text-align: center;
+}
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #d46b08; /* Same orange vibe */
+}
+.team-listing{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+.team-card {
+    background: rgb(4, 0, 27);
+    width: 310px;
+    height: 290px;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    align-items: center;
+    justify-content: center;
+}
+  .hero h1{
+    color: white;
+  }
+  
+.hero{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{% static 'images/about.png' %}') no-repeat center center/cover;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    opacity: 0.5;
+}
+.team-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+  
+.team-card h3 {
+    margin: 10px 0 5px;
+    font-size: 1.2rem;
+}
+  
+.team-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+  .hero-container{
+    width: 70%;
+  }
+.team-card {
+  width: 280px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.card-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+}
+
+.image-info {
+  position: absolute;
+  bottom: 0;
+  top: 50%;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 20px 25px;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+  text-align: center;
+}
+
+.team-card:hover .image-info {
+  transform: translateY(0);
+}
+
+.image-info h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.image-info p {
+  margin: 5px 0 10px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.social-link a {
+  color: #fff;
+  margin: 0 8px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-link a:hover {
+  color: #00bcd4;
+}
+
+        </style>
+   <section class="hero">
+    <div class="hero-container">
+      <h1>At Wizard Technology</h1>
+      <p>We Craft Digital Experiences That Convert</p>
+    </div>
+  </section>
+<!-- Who We Are -->
+<section class="py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-4 styl">
+        <img src="{% static 'images/clay-banks-_Jb1TF3kvsA-unsplash.jpg' %}" alt="Team Image" class="img-fluid rounded shadow" />
+      </div>
+      <div class="col-md-6 mt-4 mt-md-0">
+        <h2 class="mb-3">Who We Are</h2>
+        <p>
+          We are a team of passionate developers, designers, and digital strategists committed to delivering top-notch website solutions. Whether you're a small business or a growing brand, we bring your digital vision to life.
+        </p>
+        <p>
+          From idea to execution, we blend creativity and technology to build intuitive, responsive, and scalable web platforms that drive results.
+        </p>
+      </div>
+    </div>
+</div>
+</section>
+
+<!-- Mission & Vision -->
+<section class="py-5">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-6 mb-4">
+        <div class="p-4 border rounded shadow-sm h-100">
+          <i class="bi bi-lightbulb fs-1 text-primary mb-3"></i>
+          <h4 class="mb-3">Our Mission</h4>
+          <p>
+            To empower businesses by crafting impactful and innovative digital experiences that connect, convert, and scale.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="p-4 border rounded shadow-sm h-100">
+          <i class="bi bi-eye fs-1 text-success mb-3"></i>
+          <h4 class="mb-3">Our Vision</h4>
+          <p>
+            To become a leading force in digital transformation by delivering reliable and result-driven web solutions that exceed expectations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What We Offer -->
+<section class="py-5">
+    <h2 class="text-center mb-4">What We Offer</h2>
+  <div class="container">
+    
+    <div class="row text-center">
+      <div class="col-md-4 mb-4">
+        <div class="p-4 border rounded h-100">
+          <i class="bi bi-code-slash fs-2 text-danger mb-2"></i>
+          <h5>Custom Web Development</h5>
+          <p>We build fast, secure, and fully responsive websites tailored to your business goals.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="p-4 border rounded h-100">
+          <i class="bi bi-palette fs-2 text-warning mb-2"></i>
+          <h5>UI/UX Design</h5>
+          <p>Visually stunning, user-focused interfaces that enhance engagement and retention.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="p-4 border rounded h-100">
+          <i class="bi bi-gear-wide-connected fs-2 text-info mb-2"></i>
+          <h5>Website Maintenance</h5>
+          <p>Ongoing support, updates, and optimization to keep your site running smoothly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--MEET THE TEAM SECTION-->
+<section class="team-section">
+    <div class="container">
+        <h2>Meet the Minds Behind Wizard Technology</h2>
+        <p>Our talented team of designers and developers are dedicated to bringing your vision to life.</p>
+    </div>
+    <div class="team-listing">
+        
+       
+        {% for team in team %}
+    <div class="team-card">
+  <div class="card-image">
+    <img src="{{ team.image.url }}" alt="team image" />
+    <div class="image-info">
+      <h2>{{ team.name }}</h2>
+      <p>{{ team.position }}</p>
+      <div class="social-link">
+        <a title="Twitter" href="{{ team.x }}"><i class="fab fa-twitter"></i></a>
+        <a title="Instagram" href="{{team.instagram}}"><i class="fab fa-instagram"></i></a>
+        <a title="LinkedIn" href="{{team.linkedin}}"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+    
+      </div>
+</section>
+
+  
+  <style>
+  
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      height: 300px;
+      margin: 40px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1000px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: height 0.3s ease;
+    }
+
+     .carousel .card {
+      position: absolute;
+      width: 300px;
+      height: auto;
+      border-radius: 20px;
+      transition: all 0.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      padding: 20px;
+      text-align: left;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-content {
+      background: white;
+      border-radius: 16px;
+      padding: 16px 20px;
+      width: 100%;
+      height: auto;
+    }
+
+    .card-content h3 {
+      margin-bottom: 6px;
+      font-size: 1.1rem;
+    }
+
+    .card-content p {
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    .users {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .users img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+    }
+
+    /* Position classes */
+    .card.pos-0 { transform: scale(1) translateX(0); z-index: 5; }
+    .card.pos-1 { transform: scale(0.9) translateX(-180px); z-index: 4; opacity: 0.8; }
+    .card.pos-2 { transform: scale(0.8) translateX(-360px); z-index: 3; opacity: 0.6; }
+    .card.pos-3 { transform: scale(0.9) translateX(180px); z-index: 4; opacity: 0.8; }
+    .card.pos-4 { transform: scale(0.8) translateX(360px); z-index: 3; opacity: 0.6; }
+    .card.hidden { transform: scale(0.6) translateX(800px); z-index: 1; opacity: 0; pointer-events: none; }
+
+    /* ===== Responsive Fixes ===== */
+    @media (max-width: 768px) {
+      .carousel {
+        height: auto;
+        flex-direction: column;
+      }
+
+      .card {
+        position: relative;
+        width: 90%;
+        height: auto;
+        transform: none !important;
+        margin-bottom: 20px;
+        opacity: 1 !important;
+        z-index: 1 !important;
+      }
+
+      .card.hidden {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card-content h3 {
+        font-size: 1rem;
+      }
+
+      .card-content p {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+  
+{% if feedback %}
+
+ <section class="feedback">
+  <div class="container">
+    <h2>Customer Feedback</h2>
+    <p>See what our clients are saying about us. We value your feedback and strive to improve with every project.</p>
+    </div>
+<div class="carousel" id="carousel">
+  {% for feedback in feedback %}
+        <div class="card" style="background-color: {{ feedback.bg_color }}">
+          <div class="card-content">
+            <h3>{{ feedback.name }}</h3>
+            <p>{{ feedback.feedback|safe }}</p>
+            <div class="users"><img src="{{feedback.image.url}}"></div>
+          </div>
+        </div>
+{% endfor %}
+
+</div>
+</section>
+{% endif %}
+<script>
+  const carousel = document.getElementById('carousel');
+  let cards = Array.from(carousel.children);
+
+  function updatePositions() {
+    cards.forEach((card, index) => {
+      card.className = 'card'; // reset
+      if (window.innerWidth > 768) {
+        if (index <= 4) {
+          card.classList.add(`pos-${index}`);
+        } else {
+          card.classList.add('hidden');
+        }
+      } else {
+        card.classList.remove('hidden');
+      }
+    });
+  }
+
+  function slide() {
+    const first = cards.shift();
+    cards.push(first);
+    carousel.appendChild(first);
+    updatePositions();
+  }
+
+  carousel.addEventListener('click', slide);
+  setInterval(slide, 4000);
+  updatePositions();
+
+  window.addEventListener('resize', updatePositions);
+</script>
+
+</section>
+
+
+  {% endblock %}

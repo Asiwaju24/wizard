@@ -1,0 +1,165 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+ <style>
+  /* CSS */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{% static 'images/imagine.jpg'%}') no-repeat center center/cover;
+  display: flex;
+  align-items: center;  
+  justify-content: center;
+  padding: 18px;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 10px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background Spline */
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.spline {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+a{
+  text-decoration: none;
+}
+
+ </style>
+  <section class="hero">
+    <div class="hero-container">
+      <h1 data-aos="fade-right" data-aos-duration="10000">Craft to perform, Maintained to Last</h1>
+      <p data-aos="fade-left" data-aos-duration="10000">Get a high-performing website designed to turn clicks into customers, all with a simple, stress-free subscription—no contracts, no hassle.</p>
+      <a href="#" class="btn btn-primary">Get Started</a>
+      
+    </div>
+    <div class="back">
+      <spline-viewer class="spline" url="https://prod.spline.design/DNnVU9Xz8AmHrWTC/scene.splinecode"></spline-viewer>
+    </div>
+  </section>
+
+
+<style>
+  .slider
+  {
+    width: 100%;
+    overflow: hidden;
+  }
+  .slider-track{
+    display: flex;
+    width: calc(300px * 12);
+    animation: scroll 10s linear infinite;
+  }
+  .slide{
+    width: 300px;
+    flex-shrink: 0;
+    text-align: center;
+    padding: 24px;
+    margin: 20px;
+  } 
+  .slide img{
+    width: 300px;
+    height: 400px;
+    border-radius: 20px;
+  }
+  @keyframes scroll{
+    0%{ transform: translateX(0);}
+    100% { transform: translateX(-900px);}
+  }
+</style>
+ <section class="partners-section" id="partners">
+  <h2>Our Projects</h2>
+  <div class="slider">
+    <div class="slider-track">
+      {% for project in projects %}
+      <div class="slide"><img src="{{ project.image.url }}" alt="projects image"></div>
+      {% endfor %}
+      {% for project in projects %}
+      <div class="slide"><img src="{{ project.image.url }}" alt="projects image"></div>
+      {% endfor %}
+      {% for project in projects %}
+      <div class="slide"><img src="{{ project.image.url }}" alt="projects image"></div>
+      {% endfor %}
+    </div>
+  </div>
+ 
+</section>
+
+
+  <section class="about">
+    <div class="container">
+      <h2>Why Choose Us</h2>
+      <p>We make web design simple, fast, and scalable with a subscription model that puts you in control.</p>
+    </div>
+    <div class="about-list">
+      <div class="about-item" data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000">
+        <i class="fas fa-users"></i>
+        <h3>Dedicated Team</h3>
+        <p>Your own team of designers ready to bring your vision to life.</p>
+      </div>
+      <div class="about-item" data-aos="flip-left"
+     data-aos-easing="ease-out-cubi"
+     data-aos-duration="2000">
+        <i class="fas fa-sync-alt"></i>
+        <h3>Flexible Plans</h3>
+        <p>Choose a plan that fits your needs, with the ability to scale as you grow.</p>
+      </div>
+      <div class="about-item" data-aos="flip-left"
+     data-aos-easing="ease-out-cubi"
+     data-aos-duration="2000">
+        <i class="fas fa-rocket"></i>
+        <h3>Fast Turnaround</h3>
+        <p>Get your website up and running quickly with our efficient design process.</p>
+      </div>
+    </div>
+  </section>
+ 
+  
+ 
+ 
+
+   <section class="blog">
+    <div class="container">
+      <h2>Latest Articles</h2>
+      <p>Stay updated with our latest insights, tips, and trends in web design and development.</p>
+      <div class="blog-list">
+        <style>
+          .blog-item a{
+            color: #fff;
+          }
+        </style>
+        {% for blog in blogs %}
+        <div class="blog-item fade-i">
+          <img src="{{blog.image.url}}" alt="Blog Image">
+          <h3>{{blog.title}}</h3>
+        <a href="{% url 'blog_detail' blog.id %}" class="read-more">Read more →</a>
+        </div>
+        {% endfor%}
+      </div>
+    </div>
+  </section>
+ <script src="{% static 'js/script.js' %}"></script>
+  {% endblock %}
