@@ -1,7 +1,5 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
-  <title>{{ post.title }}</title>
+<title>{{ post.title }}</title>
+<body>
   <style>
     * {
       box-sizing: border-box;
@@ -144,4 +142,4 @@
 
     <a href="{% url 'blog' %}" class="back-button">← Back to Blog</a>
   </div>
-{% endblock %}
+  </body>
