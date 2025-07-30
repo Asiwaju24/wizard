@@ -12,7 +12,7 @@ SECRET_KEY = 'django-insecure-cftfp$rf6w*7h^ma^n^tb=(5(^9f8(fqrvu6l%)6(p@=n=jk^#
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['wizard-ymax.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['wizard-7zh9.onrender.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
