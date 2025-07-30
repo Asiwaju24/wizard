@@ -50,6 +50,8 @@ MIDDLEWARE = [
     
 ]
 
+CSRF_COOKIE_SECURE = True
+
 ROOT_URLCONF = 'portfolio.urls'
 
 TEMPLATES = [
