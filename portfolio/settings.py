@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-cftfp$rf6w*7h^ma^n^tb=(5(^9f8(fqrvu6l%)6(p@=n=jk^#'
 
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['wizard-ymax.onrender.com', 'localhost', '127.0.0.1']
 
@@ -52,10 +52,6 @@ MIDDLEWARE = [
 
 
 CSRF_COOKIE_SECURE = True
-
-CSRF_COOKIE_SECURE
-SESSION_COOKIE_SECURE
-ALLOWED_HOSTS
 
 
 ROOT_URLCONF = 'portfolio.urls'
